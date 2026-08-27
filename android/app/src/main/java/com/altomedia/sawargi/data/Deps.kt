@@ -5,5 +5,6 @@ package com.altomedia.sawargi.data
  */
 object Deps {
     val authRepository by lazy { AuthRepository() }
-    val postRepository by lazy { PostRepository() }
+    val socialRepository by lazy { SocialRepository() }
+    val chatRepository by lazy { ChatRepository(socialRepository) }
 }
