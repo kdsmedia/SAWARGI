@@ -1,0 +1,14 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <!-- Background rounded square -->
+    <path
+        android:fillColor="#2E7D32"
+        android:pathData="M0,0h108v108h-108z" />
+    <!-- SAWARGI 'S' monogram -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M40,38c6,-6 22,-6 22,4c0,7 -14,6 -14,14c0,6 8,8 14,4c4,-3 6,-7 6,-11c10,2 10,16 -2,22c-13,7 -32,7 -40,-4c-3,-5 -3,-20 3,-26c4,-4 8,-6 12,-7z" />
+</vector>

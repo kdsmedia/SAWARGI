@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">SAWARGI</string>
+    <!-- Supabase Connection -->
+    <string name="supabase_url" translatable="false">https://YOUR-PROJECT.supabase.co</string>
+    <string name="supabase_anon_key" translatable="false">YOUR-ANON-KEY</string>
+    <!-- AdMob App ID -->
+    <string name="admob_app_id" translatable="false">ca-app-pub-3940256099942544~3347511713</string>
+</resources>
