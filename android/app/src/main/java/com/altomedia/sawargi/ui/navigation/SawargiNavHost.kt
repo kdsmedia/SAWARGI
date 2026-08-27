@@ -1,12 +1,11 @@
 package com.altomedia.sawargi.ui.navigation
 
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.altomedia.sawargi.ui.screens.AuthScreen
+import com.altomedia.sawargi.ui.screens.HomeScreen
 import com.altomedia.sawargi.ui.screens.WelcomeScreen
 
 /** Navigation destinations for SAWARGI. */
@@ -32,36 +31,21 @@ fun SawargiNavHost() {
             )
         }
         composable(Destinations.LOGIN) {
-            Scaffold(
-                modifier = Modifier.padding(),
-                content = { padding ->
-                    // Login will be implemented in Supabase phase
-                    androidx.compose.material3.Text(
-                        "Login (Supabase wiring)",
-                        modifier = Modifier.padding(padding)
-                    )
-                }
+            AuthScreen(
+                isRegister = false,
+                onSuccess = { navController.navigate(Destinations.HOME) { popUpTo(Destinations.WELCOME) { inclusive = true } } },
+                onSwitchMode = { navController.navigate(Destinations.REGISTER) { popUpTo(Destinations.WELCOME) { inclusive = true } } }
             )
         }
         composable(Destinations.REGISTER) {
-            Scaffold(
-                content = { padding ->
-                    androidx.compose.material3.Text(
-                        "Register (Supabase wiring)",
-                        modifier = Modifier.padding(padding)
-                    )
-                }
+            AuthScreen(
+                isRegister = true,
+                onSuccess = { navController.navigate(Destinations.HOME) { popUpTo(Destinations.WELCOME) { inclusive = true } } },
+                onSwitchMode = { navController.navigate(Destinations.LOGIN) { popUpTo(Destinations.WELCOME) { inclusive = true } } }
             )
         }
         composable(Destinations.HOME) {
-            Scaffold(
-                content = { padding ->
-                    androidx.compose.material3.Text(
-                        "Home (feed)",
-                        modifier = Modifier.padding(padding)
-                    )
-                }
-            )
+            HomeScreen()
         }
     }
 }

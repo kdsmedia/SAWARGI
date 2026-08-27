@@ -1,8 +1,20 @@
 <resources>
     <string name="app_name">SAWARGI</string>
+
     <!-- Supabase Connection -->
-    <string name="supabase_url" translatable="false">https://YOUR-PROJECT.supabase.co</string>
-    <string name="supabase_anon_key" translatable="false">YOUR-ANON-KEY</string>
-    <!-- AdMob App ID -->
-    <string name="admob_app_id" translatable="false">ca-app-pub-3940256099942544~3347511713</string>
+    <string name="supabase_url" translatable="false">https://fhzrisqnlaeiyutkmkxj.supabase.co</string>
+    <string name="supabase_anon_key" translatable="false">sb_publishable_neAt-HHbJH1tpd2bYWJHjQ_YRTmHR9U</string>
+
+    <!-- AdMob -->
+    <string name="admob_app_id" translatable="false">ca-app-pub-6881903056221433~4322660400</string>
+    <string name="admob_banner" translatable="false">ca-app-pub-6881903056221433/8587434974</string>
+    <string name="admob_interstitial" translatable="false">ca-app-pub-6881903056221433/4923522130</string>
+    <string name="admob_rewarded" translatable="false">ca-app-pub-6881903056221433/1255739862</string>
+
+    <!-- Contact -->
+    <string name="developer_name" translatable="false">ALTOMEDIA</string>
+    <string name="developer_contact" translatable="false">altomediaindonesia@gmail.com</string>
+
+    <!-- Login -->
+    <string name="admin_phone" translatable="false">085813899649</string>
 </resources>

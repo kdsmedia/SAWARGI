@@ -2,6 +2,7 @@ package com.altomedia.sawargi
 
 import android.app.Application
 import android.content.Context
+import com.altomedia.sawargi.data.Supabase
 import com.google.android.gms.ads.MobileAds
 
 /**
@@ -16,6 +17,9 @@ class SawargiApplication : Application() {
 
         // Initialize Google Mobile Ads SDK with the App ID from strings.xml
         MobileAds.initialize(this) { }
+
+        // Initialize Supabase client (Postgrest, Auth, Realtime, Storage)
+        Supabase.init(this)
     }
 
     companion object {
