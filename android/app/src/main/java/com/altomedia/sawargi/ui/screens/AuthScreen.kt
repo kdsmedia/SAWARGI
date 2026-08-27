@@ -79,16 +79,7 @@ fun AuthScreen(
             Spacer(Modifier.height(12.dp))
         }
 
-        if (isRegister) {
-            OutlinedTextField(
-                value = uiState.email,
-                onValueChange = vm::onEmailChange,
-                label = { Text("Email") },
-                singleLine = true,
-                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
-                modifier = Modifier.fillMaxWidth()
-            )
-        } else {
+        if (!isRegister) {
             OutlinedTextField(
                 value = uiState.phone,
                 onValueChange = vm::onPhoneChange,
@@ -97,8 +88,8 @@ fun AuthScreen(
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Phone),
                 modifier = Modifier.fillMaxWidth()
             )
+            Spacer(Modifier.height(12.dp))
         }
-        Spacer(Modifier.height(12.dp))
         OutlinedTextField(
             value = uiState.password,
             onValueChange = vm::onPasswordChange,

@@ -46,18 +46,17 @@ class AuthViewModel(private val repo: AuthRepository = Deps.authRepository) : Vi
 
     fun onRegister() {
         val s = _uiState.value
-        if (s.email.isBlank() || s.password.isBlank() || s.fullName.isBlank()) {
-            _uiState.update { it.copy(error = "Lengkapi semua kolom.") }
+        if (s.phone.isBlank() || s.password.isBlank() || s.fullName.isBlank()) {
+            _uiState.update { it.copy(error = "Nama, nomor HP, dan sandi wajib diisi.") }
             return
         }
         _isLoading.value = true
         _uiState.update { it.copy(error = null) }
         viewModelScope.launch {
-            repo.registerWithEmail(
-                email = s.email.trim(),
+            repo.registerWithPhone(
+                phone = s.phone.trim(),
                 password = s.password,
                 fullName = s.fullName.trim(),
-                phone = s.phone.trim(),
             ).onSuccess {
                 _uiState.update { it.copy(loggedIn = true, error = null) }
             }.onFailure { e ->
@@ -67,7 +66,6 @@ class AuthViewModel(private val repo: AuthRepository = Deps.authRepository) : Vi
         }
     }
 
-    fun onEmailChange(value: String) = _uiState.update { it.copy(email = value) }
     fun onPasswordChange(value: String) = _uiState.update { it.copy(password = value) }
     fun onFullNameChange(value: String) = _uiState.update { it.copy(fullName = value) }
     fun onPhoneChange(value: String) = _uiState.update { it.copy(phone = value) }
@@ -75,7 +73,6 @@ class AuthViewModel(private val repo: AuthRepository = Deps.authRepository) : Vi
 }
 
 data class AuthUiState(
-    val email: String = "",
     val password: String = "",
     val fullName: String = "",
     val phone: String = "",
