@@ -1,0 +1,72 @@
+============================================================
+ SAWARGI - CATATAN RILIS (RELEASE NOTES)
+ Developer : ALTOMEDIA
+ Package   : com.altomedia.sawargi
+============================================================
+
+CATATAN: Dokumen ini diperbarui setiap kali rilis/build terbaru dibuat.
+Simpan satu entri baru di bagian atas untuk setiap versi yang dirilis.
+
+============================================================
+Versi 1.0.0  |  Tanggal: 27 Agustus 2026  |  Rilis Play Store
+============================================================
+
+FITUR UTAMA (pewarisan penuh dari mesin PHP WoWonder v4.1.4 yang
+dimigrasikan ke Kotlin + Supabase):
+
+- Autentikasi berbasis Nomor HP + Sandi (email sintetis internal
+  <nomor>@sawargi.app; email tidak ditampilkan ke pengguna).
+- Beranda/News Feed: status, foto, video, tautan, rasa/feeling,
+  reaksi (suka, cinta, haha, wow, sedih, marah), komentar & balasan,
+  dan simpan/bookmark postingan.
+- Stories: unggah status sementara, otomatis kedaluwarsa 24 jam.
+- Pesan Langsung/Chat: percakapan langsung satu-lawan-satu dengan
+  pembaruan otomatis (auto-refresh) dan tanda pesan.
+- Jelajahi & Pencarian pengguna, tombol Ikuti/Follow.
+- Profil publik: bio, avatar, sampul, jumlah posting/pengikut/mengikuti,
+  edit profil, postingan tersimpan.
+- Notifikasi: disuka, dikomentari, mulai mengikuti (dengan tandai dibaca).
+- Iklan: Banner AdMob di Beranda; Interstitial & Rewarded siap dipakai.
+
+PERBAIKAN & STABILITAS:
+- Migrasi metadata Kotlin/supabase-kt (Kotlin 2.4.10, kotlinx-serialization).
+- Memperbaiki seluruh error kompilasi (compilerOptions DSL, filter DSL,
+  navigasi Compose, dll.).
+- Perbaikan konfigurasi rilis (signing keystore ALTOMEDIA.jks).
+
+KONFIGURASI TEKNIS:
+- Kotlin 2.4.10, AGP 8.9.1, Compose BOM 2024.12.01
+- Supabase (Postgrest, Auth, Realtime, Storage)
+- Google ADMob (play-services-ads 23.3.0)
+- minSdk 23 | targetSdk 36 | compileSdk 36
+- versi (versionCode) 1 | versionName 1.0.0
+
+============================================================
+Versi 0.9.0  |  Tanggal: 27 Agustus 2026  |  Pra-rilis beta
+============================================================
+
+- Migrasi fitur inti: autentikasi nomor HP + sandi (email sintetis),
+  feed, postingan, reaksi, komentar, bookmark, follow, pencarian,
+  chat, notifikasi, profil, edit profil, postingan tersimpan.
+- Integrasi Supabase: schema profil/posting/komentar/reaksi/pengikut/
+  chat/notifikasi/story + kebijakan Row Level Security.
+- Integrasi AdMob: banner di Beranda.
+- Penyempurnaan navigasi bottom bar (Beranda, Jelajahi, Buat, Chat, Profil).
+
+============================================================
+Versi 0.5.0  |  Tanggal: 26 Agustus 2026  |  Fondasi
+============================================================
+
+- Scaffold aplikasi Android (minSdk 23, targetSdk 36, Compose).
+- Integrasi awal Supabase Auth + Postgrest + AdMob.
+- Layar sambutan, login/registrasi, beranda dasar.
+
+============================================================
+PANDUAN MENAMBAH CATATAN RILIS
+============================================================
+Saat ada build terbaru:
+1. Salin blok "Versi X.Y.Z" di bagian paling atas (di atas "Versi 1.0.0").
+2. Ubah angka versi sesuai versionName yang baru di
+   android/app/build.gradle.kts (defaultConfig.versionName).
+3. Tulis tanggal rilis dan ringkasan perubahan/fitur/perbaikan.
+4. Ikuti format yang sama agar konsisten.

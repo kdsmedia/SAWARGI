@@ -1,0 +1,13 @@
+# Secrets & signing assets - DO NOT COMMIT
+ALTOMEDIA/signing/
+*.jks
+*.keystore
+android/keystore.properties
+**/keystore.properties
+
+# Large release binaries (attached to GitHub Releases instead)
+ALTOMEDIA/apk-aab/
+
+# Tooling
+tools/.venv/
+__pycache__/

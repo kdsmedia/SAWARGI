@@ -1,0 +1,153 @@
+============================================================
+ PANDUAN STORE LISTING & UPLOAD GOOGLE PLAY CONSOLE - SAWARGI
+ Developer : ALTOMEDIA
+ Paket     : com.altomedia.sawargi
+============================================================
+
+Dokumen ini memandu Anda menyiapkan halaman listing dan mengunggah
+rilis ke Google Play Console dengan benar, lengkap, dan tanpa penolakan.
+
+------------------------------------------------------------
+A. SEBELUM UPLOAD - PERSIAPAN
+------------------------------------------------------------
+1. Pastikan sudah memiliki akun:
+   - Akun Google Play Developer (biaya pendaftaran sekali)
+     -> https://play.google.com/console
+   - Akun Google Cloud / Firebase (untuk kebijakan & pelacakan, opsional)
+2. Verifikasi identitas akun developer di Play Console.
+3. Buat aplikasi baru:
+   - Nama: SAWARGI
+   - Bahasa default: Bahasa Indonesia (id)
+   - Aplikasi: Aplikasi
+   - Gratis (atau sesuai harga Anda)
+
+------------------------------------------------------------
+B. JENIS APLIKASI & KONTEN
+------------------------------------------------------------
+- Kategori utama (disarankan): "Sosial" (Social)
+- Usia target: semua usia, namun cek "Family Policy" bila menarget anak.
+   SAWARGI min umur 17 -> tandai benturan usia bila perlu.
+- Daftar isi (Content rating): isi kuesioner dengan jujur
+   (konten yang dibuat pengguna = UGC, reaksi, dll.).
+- Kebijakan iklan: centang bahwa aplikasi menampilkan iklan (AdMob).
+   Data Safety -> isi (lihat bagian D).
+
+------------------------------------------------------------
+C. ISI FORMULIR STORE LISTING (TEKS REKOMENDASI)
+------------------------------------------------------------
+Nama Aplikasi (App Name):
+   SAWARGI
+
+Nama pendek (Short description) - maks 80 karakter:
+   "SAWARGI - jejaring sosial untuk berbagi cerita & terhubung dengan sahabat."
+
+Deskripsi penuh (Full description) - panjang 2000 karakter (rekomendasi):
+   "SAWARGI adalah jejaring sosial yang dibuat di Indonesia untuk berbagi
+   cerita, momen, dan terhubung dengan teman serta keluarga.
+
+   FITUR UTAMA:
+   * Buat status, unggah foto & video, dan bagikan momen harian Anda.
+   * Tunjukkan reaksi: Suka, Cinta, Haha, Wow, Sedih, dan Marah.
+   * Beri komentar dan balas komentar teman.
+   * Berbagi cerita (Stories) yang otomatis kedaluwarsa dalam 24 jam.
+   * Kirim pesan langsung satu-lawan-satu (chat/messenger).
+   * Cari dan temukan pengguna lain, serta ikuti akun yang Anda suka.
+   * Simpan (bookmark) postingan favorit untuk dibaca lagi nanti.
+   * Terima notifikasi saat akun Anda disuka, dikomentari, atau diikuti.
+   * Profil yang mudah diatur dengan foto, bio, dan informasi diri.
+
+   Mudah digunakan: daftar cukup dengan nomor HP dan kata sandi.
+   Privasi Anda dijaga: kebijakan privasi yang jelas dan keamanan data
+   berlapis tersedia di dalam aplikasi.
+
+   Unduh SAWARGI sekarang dan mulailah berbagi cerita Anda!"
+
+Kategori: Sosial
+Tags (maks 5, opsional): #sosial #jejaring #berbagi #komunitas #cerita
+
+------------------------------------------------------------
+D. DATA SAFETY (Kebijakan Privasi Aplikasi) - PENTING
+------------------------------------------------------------
+Isi formulir Data Safety di Play Console sesuai KEBIJAKAN PRIVASI yang
+sudah disediakan (ALTOMEDIA/docs/PRIVACY_POLICY.md). Poin penting:
+- Data PRIBADI yang dikumpulkan: nama, nomor HP, alamat email, bio,
+  foto, tanggal lahir, negara.
+- Data yang dikumpulkan OTOMATIS: ID iklan (Advertising ID), versi OS,
+  model perangkat, log crash.
+- Tujuan: autentikasi, fitur inti (profil/posting), keamanan, iklan.
+- Data dienkripsi saat transit (TLS) dan disimpan di server (Supabase).
+- Tidak menjual data pribadi.
+- Menyediakan mekanisme hapus akun (hubungi altomediaindonesia@gmail.com).
+
+Privasi Policy URL & Terms of Service URL:
+- Tempel URL yang sudah dipublikasikan (hosting dokumen
+  ALTOMEDIA/docs/PRIVACY_POLICY.md dan TERMS_OF_SERVICE.md).
+
+------------------------------------------------------------
+E. ASET GRAFIS YANG DIBUTUHKAN (siap di ALTOMEDIA/graphics)
+------------------------------------------------------------
+1. Icon aplikasi (512x512)  -> play/icon_512.png
+   - Tampilkan logo, bebas teks/tulisan.
+2. Feature graphic (1024x500) -> play/feature_graphic.png
+3. Screenshot (minimal 2, disarankan 8, ukuran 1080x1920):
+   - screenshot_home.png, screenshot_chat.png, screenshot_profile.png
+   - Unggah screenshot nyata dari perangkat/emulator sebelum finalisasi.
+4. Ukuran layar yang disarankan Play untuk screenshot:
+   - Telepon: 1080x1920 atau 1080x2160 (min 320, maks 3840 px).
+
+Tempat upload:
+- Play Console -> "Kehadiran aplikasi" -> "Kehadiran di toko":
+   akan ada bagian Icon, Feature Graphic, Screenshot, Promo.
+
+------------------------------------------------------------
+F. FOTO/GAMBAR FEATURE & GRAFIK LAIN (Opsional) 
+------------------------------------------------------------
+- Icon TV (untuk Android TV): 320x180
+- 7-inch & 10-inch tablet screenshot: opsional.
+
+------------------------------------------------------------
+G. KEBUTUHAN TEKNIS & PENANDAATANGAN
+------------------------------------------------------------
+- Target API: targetSdk 36 (paling baru yang tersedia saat rilis).
+- minSdk: 23.
+- App signing (Android App Bundle / AAB):
+   * Upload AAB (bukan APK) ke Play Console untuk memakai App Signing.
+   * Keystore lokal (ALTOMEDIA/jks): simpan aman dan TIDAK dibagikan.
+- AAB rilis: android/app/build/outputs/bundle/release/app-release.aab
+- APK rilis (coba-instal): android/app/build/outputs/apk/release/app-release.apk
+
+------------------------------------------------------------
+H. LANGKAH UPLOAD RILIS KE PLAY CONSOLE
+------------------------------------------------------------
+1. Login Play Console -> pilih aplikasi SAWARGI.
+2. Menu "Rilis" -> "Produksi" (atau Trek internal/alfa/beta dahulu).
+3. Klik "Buat rilis baru".
+4. Beri nama rilis, mis. "1.0.0" dan catatan rilis (copy dari
+   ALTOMEDIA/docs/RELEASE_NOTES.txt).
+5. Unggah file AAB: app-release.aab.
+6. Periksa "Perubahan yang memerlukan review" dan "Penilaian konten".
+7. Klik "Tinjau rilis" lalu "Mulai rilis ke produksi".
+8. Pantau status review (biasanya beberapa jam s/d beberapa hari).
+
+------------------------------------------------------------
+I. CHECKLIST SEBELUM KIRIM KE REVIEW
+------------------------------------------------------------
+[ ] AAB berhasil dibuat (app-release.aab ada).
+[ ] Icon, feature graphic, dan minimal 2 screenshot terunggah.
+[ ] Deskripsi pendek & penuh terisi sesuai panduan.
+[ ] Rating konten (content rating) selesai.
+[ ] Formulir Data Safety selesai & konsisten dengan kebijakan privasi.
+[ ] Privacy Policy URL & Terms URL aktif.
+[ ] Iklan AdMob ditandai (bila menampilkan iklan).
+[ ] Akun developer terverifikasi.
+[ ] versi mengikuti SemVer (mis. 1.0.0) dan catatan rilis diperbarui.
+[ ] Aplikasi diuji di perangkat/emulator sebelum upload.
+
+------------------------------------------------------------
+J. CATATAN TAMBAHAN
+------------------------------------------------------------
+- JANGAN simpan keystore & password di repo publik. Simpan di tempat aman.
+- Jangan masukkan kata sandi akun admin ke dalam deskripsi store.
+- Gunakan tangkapan layar ASLI (bukan ilustrasi) untuk screenshot agar
+  lolos review Play. File PNG di folder graphics bersifat placeholder.
+- Perbarui RELEASE_NOTES.txt setiap ada rilis baru.

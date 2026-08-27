@@ -1,0 +1,103 @@
+============================================================
+ PANDUAN UPLOAD RILIS & UPLOAD LISTING - SAWARGI
+ Developer : ALTOMEDIA
+ Paket     : com.altomedia.sawargi
+============================================================
+
+Panduan langkah demi langkah untuk mengunggah rilis (build) dan
+mengunggah/mengelola halaman listing aplikasi ke Google Play Console.
+
+------------------------------------------------------------
+1. PERSIAPAN BERKAS RILIS
+------------------------------------------------------------
+Pastikan tiga berkas ini tersedia:
+ a) AAB (untuk unggah ke Play Console):
+    android/app/build/outputs/bundle/release/app-release.aab
+ b) APK rilis (untuk pengujian manual / distribusi langsung):
+    android/app/build/outputs/apk/release/app-release.apk
+ c) Keystore (untuk penandatanganan) - JANGAN di-upload, simpan aman:
+    ALTOMEDIA/signing/ALTOMEDIA.jks
+
+Catatan: Gunakan AAB untuk Play Console agar Google dapat mengoptimalkan
+ukuran per perangkat (App Bundle). APK rilis disediakan untuk uji cepat.
+
+------------------------------------------------------------
+2. PASTIKAN VERSI DAN NOMOR VERSI
+------------------------------------------------------------
+Buka android/app/build.gradle.kts -> defaultConfig:
+   versionCode  : naikkan 1 setiap rilis (mis. 1 -> 2 -> 3)
+   versionName  : "x.y.z" (mis. 1.0.0)
+Perbarui juga ALTOMEDIA/docs/RELEASE_NOTES.txt di bagian atas.
+
+------------------------------------------------------------
+3. UPLOAD RILIS KE PLAY CONSOLE
+------------------------------------------------------------
+1) Masuk ke Google Play Console -> buka aplikasi "SAWARGI".
+2) Kiri: "Rilis" -> pilih trek:
+   - "Pengujian internal" / "Pengujian tertutup" (untuk uji beta)
+   - "Pengujian terbuka" (beta publik)
+   - "Produksi" (untuk publik)
+3) Klik "Buat rilis baru".
+4) Unggah app-release.aab (seret atau pilih berkas).
+5) Pastikan status rilis: "Status rilis siap".
+6) Klik "Tinjau rilis" -> "Mulai rilis".
+
+------------------------------------------------------------
+4. ISI/PERBARUI LISTING DI GOOGLE PLAY CONSOLE
+------------------------------------------------------------
+Menu "Kehadiran aplikasi" -> "Kehadiran di toko":
+
+ Nama aplikasi     : SAWARGI
+ Nama pendek       : teks pendek (maks 80 karakter)      -> lihat STORE_LISTING_GUIDE.txt
+ Deskripsi penuh   : teks panjang (rekomendasi format)   -> lihat STORE_LISTING_GUIDE.txt
+ Kategori          : Sosial
+
+Aset:
+ - Icon 512x512      : ALTOMEDIA/graphics/play/icon_512.png
+ - Feature graphic   : ALTOMEDIA/graphics/play/feature_graphic.png
+ - Screenshot        : ALTOMEDIA/graphics/play/screenshot_*.png (ganti dengan asli)
+
+Jendela:
+ - "Klasifikasi konten usia" -> isi kuesioner (UGC, iklan, dll.)
+ - "Data keamanan"           -> isi sesuai PRIVACY_POLICY.md
+ - "Kebijakan dan program"   -> URL Privasi & Syarat/ketentuan
+
+------------------------------------------------------------
+5. MENYEBARLUASKAN APK/AAB DI GITHUB RELEASES
+------------------------------------------------------------
+Cara membuat rilis di halaman GitHub agar mudah diunduh:
+1) Push tag versi:
+   git tag v1.0.0
+   git push origin v1.0.0
+2) Buat rilis di GitHub (dari dashboard repo):
+   - Isi tag : v1.0.0
+   - Judul  : SAWARGI v1.0.0
+   - Deskripsi: salin isi ALTOMEDIA/docs/RELEASE_NOTES.txt
+3) Lampirkan berkas:
+   - app-release.apk
+   - app-release.aab
+   Klik "Publish release".
+
+------------------------------------------------------------
+6. CHECKLIST SEBELUM UPLOAD
+------------------------------------------------------------
+[ ] AAB & APK rilis berhasil dibangun tanpa error.
+[ ] Aplikasi diuji di perangkat/emulator (login, feed, posting, dll).
+[ ] versionCode/versionName diperbarui.
+[ ] RELEASE_NOTES.txt diperbarui.
+[ ] Icon, feature graphic, & screenshot siap.
+[ ] Deskripsi, Data Safety, Privacy & Terms terisi.
+[ ] Aplikasi tidak memakai data/credential dummy pada build rilis.
+[ ] Tidak ada kata sandi akun/API key yang bocor ke repo/lampiran rilis.
+
+------------------------------------------------------------
+7. CATATAN PENTING KEAMANAN
+------------------------------------------------------------
+- JANGAN pernah mengunggah ALTOMEDIA.jks maupun password-nya ke repo
+  publik atau ke Play Console. Simpan offline di tempat aman.
+- JANGAN pernah mem-push anon/secret Supabase key ataupun AdMob App ID
+  yang sensitif ke README/konfigurasi publik bila bukan milik app ini.
+  (Untuk app ini, kunci anon/publishable memang di-embed di klien,
+   yang merupakan praktik standar, namun jangan tambahkan service_role.)
+- Jika keystore hilang, AAB tidak dapat di-update dengan identitas sama.
+  Lakukan back-up keystore di lokasi terpercaya.

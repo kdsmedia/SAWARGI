@@ -5,6 +5,15 @@ plugins {
     alias(libs.plugins.kotlin.serialization)
 }
 
+import java.util.Properties
+import java.io.FileInputStream
+
+// ---- Release signing (reads secrets from ../keystore.properties) ----
+val keystoreProps = Properties().apply {
+    val f = rootProject.file("keystore.properties")
+    if (f.exists()) { load(FileInputStream(f)) }
+}
+
 android {
     namespace = "com.altomedia.sawargi"
     compileSdk = 36
@@ -22,6 +31,22 @@ android {
         }
     }
 
+    signingConfigs {
+        create("release") {
+            val ps = keystoreProps
+            val storePath = ps.getProperty("storeFile", "")
+            val storePwd = ps.getProperty("storePassword", "")
+            val alias = ps.getProperty("keyAlias", "")
+            val keyPwd = ps.getProperty("keyPassword", "")
+            if (storePath.isNotBlank() && storePwd.isNotBlank()) {
+                storeFile = rootProject.file(storePath)
+                storePassword = storePwd
+                keyAlias = alias
+                keyPassword = keyPwd
+            }
+        }
+    }
+
     buildTypes {
         release {
             isMinifyEnabled = false
@@ -29,6 +54,7 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            signingConfig = signingConfigs.getByName("release")
         }
     }
 
